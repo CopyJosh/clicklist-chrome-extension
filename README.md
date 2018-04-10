@@ -13,6 +13,8 @@ The DV%'s are computed based on information from the FDA and USDA.
 Before installing the extension, visit a product page such as https://kroger.com/p/asparagus/0000000004080.
 After installing the extension, a Nutrition Info tab will appear such as found here https://www.kroger.com/p/coca-cola/0004900002890
 
+See before.png and after.png for screenshots.
+
 ## Disclaimer
 
 This app is not associated in any way with Kroger (http://www.kroger.com/).
