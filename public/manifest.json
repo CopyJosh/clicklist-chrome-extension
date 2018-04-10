@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "ClickList Chrome Extension",
+  "version": "0.1",
+  "description": "Kroger ClickList Chrome Extension for Nutritional Data by Josh Tomaino. This is a proof-of-concept, and information gathered should not be used in making any dietary decisions.",
+  "content_scripts": [
+    {
+      "matches": ["https://www.kroger.com/p/*"],
+      "css": ["/static/css/main.css"],
+      "js": ["/static/js/main.js"]
+    }
+  ]
+}
