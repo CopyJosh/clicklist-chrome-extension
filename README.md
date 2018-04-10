@@ -15,6 +15,11 @@ After installing the extension, a Nutrition Info tab will appear such as found h
 
 See before.png and after.png for screenshots.
 
+## Installation
+
+Install and build, and upload the build folder via Load Unpacked Extensions in google chrome.
+Essentially, step 2 & 5: https://www.cnet.com/how-to/how-to-install-chrome-extensions-manually/
+
 ## Disclaimer
 
 This app is not associated in any way with Kroger (http://www.kroger.com/).
