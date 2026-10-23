@@ -34,6 +34,8 @@ class FoodSearch extends React.Component {
           this.setState({
             foods: foods
           });
+        }).catch(() => {
+          this.setState({ error: "Nutrition search is disabled until a secure server API is configured." });
         });
 
     }
@@ -56,7 +58,7 @@ class FoodSearch extends React.Component {
     if(foods.length !== 0) {
         renderNutrition = <NutritionLabel nutritionFacts={foods} />;
     } else {
-        renderNutrition = "Hello World";
+        renderNutrition = this.state.error || "Nutrition search is disabled until a secure server API is configured.";
     }
 
     return (   

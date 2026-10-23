@@ -23,3 +23,21 @@ Essentially, step 2 & 5: https://www.cnet.com/how-to/how-to-install-chrome-exten
 ## Disclaimer
 
 This app is not associated in any way with Kroger (http://www.kroger.com/).
+
+
+## Security status (2026-10-23)
+
+Nutrition search is disabled. Browser code cannot keep the provider API credential private.
+The extension displays a disabled message and sends no provider request.
+No credential rotation occurred. Removal from this branch does not remove values from Git history.
+
+TODO before any reuse:
+
+- Replace the ejected Webpack 3 and Jest 20 toolchain with supported tools.
+- Migrate the Manifest V2 extension to Manifest V3.
+- Add an authenticated server API with limits before restoring nutrition search.
+- Verify the current Kroger page selectors and the provider response contract with that server API.
+- Review the remaining dependency advisories. An advisory match does not prove a live exploit.
+
+The source update refreshes compatible dependency versions. It does not complete the toolchain migration.
+No deployment or extension publication occurred.
