@@ -27,17 +27,30 @@ This app is not associated in any way with Kroger (http://www.kroger.com/).
 
 ## Security status (2026-10-23)
 
-Nutrition search is disabled. Browser code cannot keep the provider API credential private.
+Nutrition search stays disabled. Browser code cannot keep the provider API credential private.
 The extension displays a disabled message and sends no provider request.
-No credential rotation occurred. Removal from this branch does not remove values from Git history.
+No credential rotation occurred. Removed values remain in Git history.
 
-TODO before any reuse:
+The extension now uses Manifest V3, React 19, and esbuild.
+The package contains one content script and its CSS. It requests no extra permissions or remote code.
+The host match stays limited to `https://www.kroger.com/p/*`.
+The old Webpack 3, Jest 20, service-worker template, and ejected build dependencies are removed.
+The full and runtime npm audits each report zero findings at the tested graph.
 
-- Replace the ejected Webpack 3 and Jest 20 toolchain with supported tools.
-- Migrate the Manifest V2 extension to Manifest V3.
-- Add an authenticated server API with limits before restoring nutrition search.
-- Verify the current Kroger page selectors and the provider response contract with that server API.
-- Review the remaining dependency advisories. An advisory match does not prove a live exploit.
+Use Node 24 and npm 11.19.1:
 
-The source update refreshes compatible dependency versions. It does not complete the toolchain migration.
-No deployment or extension publication occurred.
+```sh
+npm ci
+npm run lint
+npm test
+```
+
+Load the `build` directory as an unpacked extension. No publication occurred.
+The build keeps stable `static/js/main.js` and `static/js/main.css` names for the manifest.
+The artifact test executes the actual minified bundle in a DOM.
+It checks the disabled message, no requests, duplicate injection, absent product containers, and existing product tabs.
+A real browser also loaded the generated bundle and CSS against a local product fixture without requests.
+
+Before reuse, configure an authenticated server API with limits and verify the current Kroger selectors.
+The existing-tab early return stays in place. The tests do not verify the current Kroger site or extension installation in Chrome.
+No deployment, production write, credential rotation, approval, or merge occurred.

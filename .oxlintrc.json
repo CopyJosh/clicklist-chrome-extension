@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "typescript"
+  ],
+  "categories": {
+    "correctness": "error"
+  },
+  "ignorePatterns": [
+    "build/**",
+    "node_modules/**"
+  ]
+}
