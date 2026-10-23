@@ -13,8 +13,7 @@ class FoodSearch extends React.Component {
   componentDidMount() {
     // this.state.searchValue for the search
     // this.handleSearchChange to initiate
-    console.log("Mounted", window.location.href);
-    
+
     /**
      * Regex the Kroger Product URL
      * i.e: https://www.kroger.com/p/coca-cola/0004900002890
@@ -28,39 +27,33 @@ class FoodSearch extends React.Component {
         // This isn't a full-proof IF but our chrome extension
         // already has a load limit on our URL for a /p/* page
 
-        console.log("url parsed", url[2]);
 
         Client.search(url[2], foods => {
           this.setState({
             foods: foods
           });
+        }).catch(() => {
+          this.setState({ error: "Nutrition search is disabled until a secure server API is configured." });
         });
 
     }
 
   };
 
-  componentWillReceiveProps(nextProps){
-      if(this.props.foods !== nextProps.foods) {
-        this.setState({foods: nextProps.foods})
-      }
-  }
-
   render() {
 
-    const { foods } = this.state;
+    const foods = this.props.foods || this.state.foods;
 
-    console.log('foods', foods);
 
     var renderNutrition;
     if(foods.length !== 0) {
         renderNutrition = <NutritionLabel nutritionFacts={foods} />;
     } else {
-        renderNutrition = "Hello World";
+        renderNutrition = this.state.error || "Nutrition search is disabled until a secure server API is configured.";
     }
 
-    return (   
-        
+    return (
+
         <div className="NutritionInfo">
             <div className="NutritionInfo-LabelContainer">
                 {renderNutrition}
@@ -71,15 +64,15 @@ class FoodSearch extends React.Component {
                     </p>
                     <div className="NutritionIngredients-NutritionIndicators"></div>
                     <p className="NutritionIngredients-Disclaimer"><strong>Disclaimer:<br /></strong><span>
-                    Actual product packaging and materials may contain additional and/or different ingredient, 
-                    nutritional, or proper usage information than the information displayed on our website. 
-                    You are responsible for reading labels, warnings, and directions prior to using or consuming 
-                    a product. If you have food sensitivities or allergies, you should always read the actual 
-                    product labels to confirm the safety of the product for your situation. Content on this 
-                    website is for general reference purposes only and is not intended to substitute for advice 
-                    by a physician, pharmacist, or other licensed health care professional. You should not use 
-                    the information presented on this website for self-diagnosis or for treating a health problem. 
-                    All products may not be available in all stores. See your local store for specific offerings. 
+                    Actual product packaging and materials may contain additional and/or different ingredient,
+                    nutritional, or proper usage information than the information displayed on our website.
+                    You are responsible for reading labels, warnings, and directions prior to using or consuming
+                    a product. If you have food sensitivities or allergies, you should always read the actual
+                    product labels to confirm the safety of the product for your situation. Content on this
+                    website is for general reference purposes only and is not intended to substitute for advice
+                    by a physician, pharmacist, or other licensed health care professional. You should not use
+                    the information presented on this website for self-diagnosis or for treating a health problem.
+                    All products may not be available in all stores. See your local store for specific offerings.
                     Kroger assumes no liability for inaccuracies or misstatements regarding any product.</span></p>
                 </div>
             </div>
